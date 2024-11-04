@@ -40,11 +40,9 @@ public class Cipher {
             char currentChar = Character.toLowerCase(inputCharacterArray[i]);
             Character encryptedChar = modifiedAlphabet.get(currentChar);
 
-            // Проверяем, был ли найден символ в modifiedAlphabet
             if (encryptedChar != null) {
                 outputStringBuilder.append(encryptedChar);
             } else {
-                // Если символ не найден, добавляем оригинальный символ
                 outputStringBuilder.append(inputCharacterArray[i]);
             }
         }

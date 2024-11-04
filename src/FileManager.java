@@ -10,13 +10,6 @@ public class FileManager {
     private Path pathIn;
     private Path pathOut;
 
-    public Path getPathIn() {
-        return pathIn;
-    }
-
-    public Path getPathOut() {
-        return pathOut;
-    }
 
     public FileManager(String pathToOriginalFile) {
         this.pathToOriginalFile = pathToOriginalFile;
@@ -41,7 +34,7 @@ public class FileManager {
 
         count++;
 
-        String newFileName = "modified_"  + count + "_" + pathIn.getFileName();
+        String newFileName = "modified_" + count + "_" + pathIn.getFileName();
         pathOut = Path.of(newFileName);
 
         try {
