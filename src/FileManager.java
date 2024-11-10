@@ -19,7 +19,6 @@ public class FileManager {
 
     public String readUserFile() {
         pathIn = Path.of(pathToOriginalFile);
-
         String lineFromFile = " ";
 
         try {
@@ -36,16 +35,10 @@ public class FileManager {
     }
 
     public void writeTheUserFile(String modifiedString, String pathToModifiedPath) {
-
-
         String newNameFiles = pathToModifiedPath + File.separator + "key" + count + ".txt";
-
         pathOut = Path.of(newNameFiles);
         pathOut.toAbsolutePath();
-
-
         count++;
-
 
         try {
             Files.createFile(pathOut);

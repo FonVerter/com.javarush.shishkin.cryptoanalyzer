@@ -10,7 +10,6 @@ public class Main {
 
         switch (helloScanner.nextInt()) {
             case 1:
-
                 System.out.println("Введи путь к файлу который надо зашифровать:");
                 Scanner pathToOriginalFile = new Scanner(System.in);
                 String pathToFile = pathToOriginalFile.nextLine();
