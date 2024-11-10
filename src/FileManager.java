@@ -1,3 +1,4 @@
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -22,31 +23,36 @@ public class FileManager {
         String lineFromFile = " ";
 
         try {
+            if (Files.size(pathIn) == 0){
+                System.out.println("Указанный файл был пустым. Так и задумано?");
+            }
             lineFromFile = Files.readString(pathIn);
         } catch (IOException e) {
-            e.getMessage();
+            System.out.println("Пустой файл или некорректный путь");
+            System.out.println("Проверьте путь и попробуйте заново");
         }
 
         return lineFromFile;
     }
 
-    public void writeTheUserFile(String modifiedString) {
+    public void writeTheUserFile(String modifiedString, String pathToModifiedPath) {
+
+
+        String newNameFiles = pathToModifiedPath + File.separator + "key" + count + ".txt";
+
+        pathOut = Path.of(newNameFiles);
+        pathOut.toAbsolutePath();
+
 
         count++;
 
-        String newFileName = "modified_" + count + "_" + pathIn.getFileName();
-        pathOut = Path.of(newFileName);
 
         try {
             Files.createFile(pathOut);
-        } catch (IOException e) {
-            e.getMessage();
-        }
-
-        try {
             Files.writeString(pathOut, modifiedString);
         } catch (IOException e) {
-            e.getMessage();
+            System.out.println("Вы ввели некорректный путь");
+            System.out.println("Проверьте путь и попробуйте заново");
         }
 
 

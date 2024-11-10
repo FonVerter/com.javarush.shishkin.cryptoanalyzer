@@ -14,6 +14,10 @@ public class Cipher {
 
     public HashMap<Character, Character> createNewAlphabet(int userShiftSymbol) {
 
+        if (userShiftSymbol == 0){
+            System.out.println("При нулевом ключе шифр Цезаря не работает.");
+            System.out.println("Повторите попытку с другим ключом.");
+        }
         HashMap<Character, Character> newAlphabet = new HashMap<>();
         int alphabetLength = ALPHABET.length;
 

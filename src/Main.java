@@ -10,9 +10,13 @@ public class Main {
 
         switch (helloScanner.nextInt()) {
             case 1:
+
                 System.out.println("Введи путь к файлу который надо зашифровать:");
                 Scanner pathToOriginalFile = new Scanner(System.in);
                 String pathToFile = pathToOriginalFile.nextLine();
+                System.out.println("Укажите директорию, в которой нужно сохранить зашифрованный файл");
+                Scanner pathToModifiedFiles = new Scanner(System.in);
+                String pathToModifiedFilesStr = pathToModifiedFiles.nextLine();
                 System.out.println("Введи секретный ключ:");
                 Scanner secretKey = new Scanner(System.in);
                 int shiftValue = secretKey.nextInt();
@@ -21,9 +25,9 @@ public class Main {
                 Cipher russianAlphabet = new Cipher();
                 HashMap<Character, Character> newAlphabet = russianAlphabet.createNewAlphabet(shiftValue);
                 String s = russianAlphabet.encryptTheString(readingFilesString, newAlphabet);
-                fileManagerTest.writeTheUserFile(s);
-                System.out.println("Файл успешно зашифрован.");
-                System.out.println("Зашифрованный файл находится в папке исходного файла");
+                fileManagerTest.writeTheUserFile(s, pathToModifiedFilesStr);
+                System.out.println("Файл успешно зашифрован и сохранен в указанной директории.");
+
                 break;
 
             case 2:
@@ -33,6 +37,10 @@ public class Main {
                 System.out.println("Введи секретный ключ:");
                 Scanner secretKey2 = new Scanner(System.in);
                 int shiftValue2 = secretKey2.nextInt();
+                System.out.println("Укажите директорию, в которой нужно сохранить расшифрованный файл");
+                Scanner pathToModifiedFiles2 = new Scanner(System.in);
+                String pathToModifiedFilesStr2 = pathToModifiedFiles2.nextLine();
+
 
                 if (shiftValue2 > 0) {
                     shiftValue2 = -shiftValue2;
@@ -45,15 +53,17 @@ public class Main {
                 Cipher russianAlphabet2 = new Cipher();
                 HashMap<Character, Character> newAlphabet2 = russianAlphabet2.createNewAlphabet(shiftValue2);
                 String s2 = russianAlphabet2.encryptTheString(readingFilesString2, newAlphabet2);
-                fileManagerTest2.writeTheUserFile(s2);
-                System.out.println("Файл успешно зашифрован.");
-                System.out.println("Расшифрованный файл находится в папке исходного файла");
+                fileManagerTest2.writeTheUserFile(s2, pathToModifiedFilesStr2);
+                System.out.println("Файл успешно расшифрован и сохранен в указанной директории.");
                 break;
 
             case 3:
                 System.out.println("Введи путь к файлу, который будем расшифровывать");
                 Scanner scannerBruteForce = new Scanner(System.in);
                 String pathToFile3 = scannerBruteForce.nextLine();
+                System.out.println("Укажите директорию, в которой нужно сохранить файлы расшифрованные разными ключами");
+                Scanner pathToModifiedFiles3 = new Scanner(System.in);
+                String pathToModifiedFilesStr3 = pathToModifiedFiles3.nextLine();
 
                 for (int i = 0; i < 40; i++) {
                     FileManager fileManager3 = new FileManager(pathToFile3);
@@ -61,10 +71,10 @@ public class Main {
                     Cipher russianAlphabet3 = new Cipher();
                     HashMap<Character, Character> newAlphabet3 = russianAlphabet3.createNewAlphabet(i);
                     String s3 = russianAlphabet3.encryptTheString(readingFilesString3, newAlphabet3);
-                    fileManager3.writeTheUserFile(s3);
+                    fileManager3.writeTheUserFile(s3, pathToModifiedFilesStr3);
 
                 }
-
+                System.out.println("Файлы сохранены в указанной директории.");
         }
 
 
